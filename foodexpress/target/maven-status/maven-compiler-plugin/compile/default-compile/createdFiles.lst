@@ -1,0 +1,5 @@
+com\example\foodexpress\repository\UserRepository.class
+com\example\foodexpress\model\User.class
+com\example\foodexpress\FoodexpressApplication.class
+com\example\foodexpress\controller\UserController.class
+com\example\foodexpress\service\UserService.class

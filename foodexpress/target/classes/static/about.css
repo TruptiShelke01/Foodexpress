@@ -1,0 +1,165 @@
+/* Container Styles */
+.container {
+  width: 90%;
+  margin: 0 auto;
+  height: max-content;
+}
+
+/* Header Styles */
+h2 {
+  font-size: 1.4rem;
+  color: #e63946;
+}
+
+/* List Item Styles */
+li {
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+.about-us li::before {
+  content: "✔️";
+  color: #e63946;
+  margin-right: 10px;
+}
+
+/* Banner Styles */
+.banner {
+  width: 100%;
+  height: 300px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 8px;
+  margin: 80px 0;
+}
+
+/* About Us Section Styles */
+.about-us {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  background: #1a1a1a;
+  border-radius: 12px;
+  padding-bottom: 0;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 40px;
+  height: max-content;
+}
+
+.about-us-content {
+  flex: 1;
+  padding: 20px;
+  margin-right: 20px;
+  min-width: 300px;
+}
+
+.about-us-content h2 {
+  color: #e63946;
+  margin-bottom: 10px;
+}
+
+.about-us-content p {
+  font-size: 1.1rem;
+  color: #e0e0e0;
+  margin-bottom: 50px;
+}
+
+.about-us-img {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 400px;
+  min-width: 300px;
+  position: relative;
+}
+
+/* Stacked Images Styles */
+.stacked-images {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.stacked-images .image {
+  width: 100%;
+  border-radius: 10px;
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  margin-bottom: 20px;
+}
+
+.stacked-images .image1 {
+  width: 80%;
+  height: auto;
+  z-index: 1;
+}
+
+.stacked-images .image2,
+.stacked-images .image3 {
+  width: 60%;
+  z-index: 2;
+}
+
+.stacked-images .image2 {
+  margin-top: -140px;
+  margin-left: 250px;
+}
+
+.stacked-images .image3 {
+  margin-top: -80px;
+  margin-right: 120px;
+}
+
+.stacked-images .image:hover {
+  transform: translateY(-10px) scale(1.05);
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.3);
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  body {
+    font-size: 63.5%;
+  }
+
+  .container {
+    width: 90%;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .about-us {
+    overflow: hidden;
+  }
+
+  .about-us li {
+    font-size: 1rem;
+    line-height: 1.4;
+    margin-bottom: 10px;
+  }
+
+  .about-us-img {
+    justify-content: center;
+  }
+
+  .stacked-images {
+    justify-content: center;
+    align-items: stretch;
+  }
+
+  .stacked-images .image1,
+  .stacked-images .image2,
+  .stacked-images .image3 {
+    width: 100%;
+    margin: 0 0 10px 0;
+  }
+
+  .whatsapp {
+    bottom: 8%;
+    width: 48px;
+    height: 48px;
+    font-size: 2.1rem;
+  }
+}

@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    <style>
+      .btn {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color:rgb(228, 66, 66);
+        color: black;
+        text-align: center;
+        text-decoration: none;
+        border-radius: 5px;
+        font-size: 16px;
+    }
+    .btn:hover {
+        background-color:rgb(246, 250, 250);
+    }
+
+  </style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Description Tag ( Improve SEO ) -->
+    <meta
+      name="description"
+      content="At Pollos Asados Gadel, we pride ourselves on offering the best grilled chicken in Apodaca, Nuevo León. Our chicken is prepared with the freshest ingredients and grilled to perfection, ensuring a juicy and delicious taste. We offer options such as whole grilled chicken, half grilled chicken, and complete packages with tortillas, potatoes, grilled onions, grilled chili, and more. With fast and reliable home delivery service, you'll enjoy an unmatched culinary experience in the comfort of your home. Place your order today and discover why we are the best!"
+    />
+
+    <!-- KeyWods Tag ( Improve SEO ) -->
+    <meta
+      name="keywords"
+      content="Grilled chicken, Gadel, whole grilled chicken, half grilled chicken, grilled chicken packages, grilled food, tortillas, potatoes, grilled onions, grilled chili, sauce and lime, grilled sausages, tortilla chips with guacamole, Apodaca, Nuevo León, home delivery service, best grilled chicken, delicious food, takeout, homemade food, barbecue, chicken specialties, grill in Apodaca, juicy chicken, fast food, barbecue menu, chicken deal, chicken restaurant, family meals"
+    />
+
+    <!-- Website Title -->
+    <title>Food Express</title>
+
+    
+
+    <!-- Custom Css Link -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    
+
+    <!-- Header -->
+    <header>
+      <div class="container">
+        <a id="nav-menu" class="nav-menu">
+          <ion-icon name="menu-outline"></ion-icon>
+        </a>
+        
+        <nav class="main-nav">
+          <ul class="nav-links">
+            <li><a href="/" class="nav-link">Home</a></li>
+           
+            <li><a href="/index" class="nav-link">Menu</a></li>
+            <li><a href="/review" class="nav-link">Reviews</a></li>
+            
+            <li><a href="/contact" class="nav-link">Contact</a></li>
+          </ul>
+        </nav>
+        <div class="nav-icons">
+          
+          <a href="#" class="cart-icon" aria-label="Open Cart">
+            <ion-icon name="cart-outline"></ion-icon>
+            <div class="cart-count">
+              <span>0</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Slide Menu -->
+    <div id="side-menu" class="side-menu">
+      <div id="close-menu" class="close-menu">
+        <ion-icon name="close-outline"></ion-icon>
+      </div>
+      <ul class="side-nav-links">
+        <li><a href="#home" class="side-nav-link">Home</a></li>
+        <li><a href="#menu" class="side-nav-link">Menu</a></li>
+        <li><a href="#review" class="side-nav-link">Reviews</a></li>
+        <li><a href="#contact" class="side-nav-link">Contact</a></li>
+      </ul>
+    </div>
+    <div id="side-overlay" class="side-overlay"></div>
+
+    <!-- Future Work -->
+    <!-- Bottom Navbar
+    <nav class="bottom-nav">
+      <a href="#menu" class="menu-icon">
+        <ion-icon name="restaurant-outline"></ion-icon>
+        <span class="icon-bottom">Menu</span>
+      </a>
+      <a class="cart-icon">
+        <ion-icon name="cart-outline"></ion-icon>
+        <div class="cart-count">
+          <span>0</span>
+        </div>
+        <span class="icon-bottom">Cart</span>
+      </a>
+      <a class="profile-icon" onclick="profilePopup()">
+        <ion-icon name="person-outline"></ion-icon>
+        <span class="icon-bottom">Profile</span>
+      </a>
+      <a href="#" class="contact-icon">
+        <ion-icon name="call-outline"></ion-icon>
+        <span class="icon-bottom">Contact</span>
+      </a>
+    </nav> -->
+
+   
+
+    
+
+    <!-- Slide Cart -->
+    <div class="cart">
+      <div class="cart-content">
+        <div class="cart-header">
+          <div class="cart-title">
+            <h2>Your Cart</h2>
+            <span>0</span>
+          </div>
+          <a class="close-btn">
+            <ion-icon name="close-outline"></ion-icon>
+          </a>
+        </div>
+        <div class="cart-body">
+          <div class="empty">
+            <p class="empty-message">Your cart is currently empty.</p>
+            <a href="#menu"  class="btn">View Our Menu</a>
+          </div>
+        </div>
+        <div class="cart-bottom">
+          <div class="total">
+            <h3>Total:</h3>
+            <span id="payment_field">$0.00</span>
+          </div>
+          <div class="actions">
+            <button onclick="paymentStart()" class="btn btn-success btn-block">PAY</button>
+          </div>
+         
+        </div>
+      </div>
+    </div>
+
+   
+
+  
+
+    <!-- Menu Section -->
+    <section id="menu" class="menu section">
+      <div class="container">
+        <h1 class="heading">Our <span>Menu!</span></h1>
+        
+        <!-- Menu Filter Buttons -->
+        <div class="menu-filter">
+          <button class="filter-btn active" data-filter="all">All</button>
+          <button class="filter-btn" data-filter="chicken-meals">Meals</button>
+          <button class="filter-btn" data-filter="packages">Packages</button>
+          <button class="filter-btn" data-filter="additions">Extra</button>
+        </div>
+
+        <!-- Menu List -->
+        <div class="menu-list">
+          <div class="menu-item chicken-meals all">
+            <div class="menu-img">
+              <img
+                src="menu/chicken.webp"
+                alt="Grilled Chicken"
+                loading="lazy"
+              />
+            </div>
+            <div class="menu-content">
+              <h2>1 Grilled Chicken</h2>
+              <p>
+                Tortillas, Potatoes, Grilled onions, Roasted chili, Sauce and
+                lime
+              </p>
+              <div class="menu-action">
+                <button class="btn add-to-cart">Add To Cart</button>
+                <div class="star-rating">
+                  <ion-icon name="star"></ion-icon>
+                  <ion-icon name="star"></ion-icon>
+                  <ion-icon name="star"></ion-icon>
+                  <ion-icon name="star"></ion-icon>
+                  <ion-icon name="star"></ion-icon>
+                </div>
+                <p class="price">$160</p>
+              </div>
+            </div>
+          </div>
+
+          
+          
+
+          <!-- Packages -->
+          <div class="menu-item packages all">
+            <div class="menu-img">
+              <img src="menu/package-2.webp" alt="Package 1" loading="lazy" />
+            </div>
+            <div class="menu-content">
+              <h2>Package 1</h2>
+              <p>
+                1 Grilled chicken, 3 grilled sausages, Tortilla chips with
+                guacamole, Tortillas, Potatoes, Grilled onions, Roasted chili,
+                Sauce and lime
+              </p>
+              <div class="menu-action">
+                <button class="btn add-to-cart">Add To Cart</button>
+                <div class="star-rating">
+                  <ion-icon name="star"></ion-icon>
+                  <ion-icon name="star"></ion-icon>
+                  <ion-icon name="star"></ion-icon>
+                  <ion-icon name="star"></ion-icon>
+                  <ion-icon name="star-outline"></ion-icon>
+                </div>
+                <p class="price">$200</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="menu-item packages all">
+            <div class="menu-img">
+              <img src="menu/package-1.webp" alt="Package 2" loading="lazy" />
+            </div>
+            <div class="menu-content">
+              <h2>Package 2</h2>
+              <p>
+                2 Grilled chickens, 3 grilled sausages, Tortilla chips with
+                guacamole, Tortillas, Potatoes, Grilled onions, Roasted chili,
+                Sauce and lime
+              </p>
+              <div class="menu-action">
+                <button class="btn add-to-cart">Add To Cart</button>
+                <div class="star-rating">
+                  <ion-icon name="star"></ion-icon>
+                  <ion-icon name="star"></ion-icon>
+                  <ion-icon name="star"></ion-icon>
+                  <ion-icon name="star"></ion-icon>
+                  <ion-icon name="star"></ion-icon>
+                </div>
+                <p class="price">$350</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Additions -->
+          <div class="menu-item additions all">
+            <div class="menu-img">
+              <img src="menu/Sausages.webp" alt="3 Sausages" loading="lazy" />
+            </div>
+            <div class="menu-content">
+              <h2>3 Sausages</h2>
+              <p>Indulge in our juicy grilled sausages, bursting with flavor</p>
+              <div class="menu-action">
+                <button class="btn add-to-cart">Add To Cart</button>
+                <div class="star-rating">
+                  <ion-icon name="star"></ion-icon>
+                  <ion-icon name="star"></ion-icon>
+                  <ion-icon name="star"></ion-icon>
+                  <ion-icon name="star"></ion-icon>
+                  <ion-icon name="star-outline"></ion-icon>
+                </div>
+                <p class="price">$30</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="menu-item additions all">
+            <div class="menu-img">
+              <img
+                src="menu/guacamole-chips.webp"
+                alt="Tortilla Chips with Guacamole"
+                loading="lazy"
+              />
+            </div>
+            <div class="menu-content">
+              <h2>Tortilla Chips with Guacamole</h2>
+              <p>
+                Savor our crunchy tortilla chips served with creamy guacamole.
+              </p>
+              <div class="menu-action">
+                <button class="btn add-to-cart">Add To Cart</button>
+                <div class="star-rating">
+                  <ion-icon name="star"></ion-icon>
+                  <ion-icon name="star"></ion-icon>
+                  <ion-icon name="star"></ion-icon>
+                  <ion-icon name="star"></ion-icon>
+                  <ion-icon name="star"></ion-icon>
+                </div>
+                <p class="price">$30</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="menu-item additions all">
+            <div class="menu-img">
+              <img
+                src="menu/guacamole (2).webp"
+                alt="Guacamole"
+                loading="lazy"
+              />
+            </div>
+            <div class="menu-content">
+              <h2>Guacamole</h2>
+              <p>Delight in the richness of our homemade guacamole.</p>
+              <div class="menu-action">
+                <button class="btn add-to-cart">Add To Cart</button>
+                <div class="star-rating">
+                  <ion-icon name="star"></ion-icon>
+                  <ion-icon name="star"></ion-icon>
+                  <ion-icon name="star"></ion-icon>
+                  <ion-icon name="star"></ion-icon>
+                  <ion-icon name="star-outline"></ion-icon>
+                </div>
+                <p class="price">$10</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="menu-item additions all">
+            <div class="menu-img">
+              <img src="menu/onion.webp" alt="Grilled Onions" loading="lazy" />
+            </div>
+            <div class="menu-content">
+              <h2>Grilled Onions</h2>
+              <p>Enjoy the savory sweetness of our perfectly grilled onions.</p>
+              <div class="menu-action">
+                <button class="btn add-to-cart">Add To Cart</button>
+                <div class="star-rating">
+                  <ion-icon name="star"></ion-icon>
+                  <ion-icon name="star"></ion-icon>
+                  <ion-icon name="star"></ion-icon>
+                  <ion-icon name="star"></ion-icon>
+                  <ion-icon name="star"></ion-icon>
+                </div>
+                <p class="price">$10</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+       
+
+      </div>
+    </section>
+
+    <!-- Flags Icon -->
+    <!-- <div class="lang">
+      <a class="fi fi-es fis" id="spanish"></a>
+      <a class="fi fi-us fis" id="english"></a>
+    </div> -->
+
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"
+		integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g="
+		crossorigin="anonymous"></script>
+	<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+		integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+		integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+		crossorigin="anonymous"></script>
+        <script>
+
+          const urlParams = new URLSearchParams(window.location.search);
+          const amountFromCart = urlParams.get('amount');
+          
+          // If amount is available, set it in the payment field
+          if (amountFromCart) {
+              document.getElementById('payment_field').innerText = `$${amountFromCart}`;
+          }
+          
+          const paymentStart = () => {
+              console.log("Payment Started");
+              let amount = $("#payment_field").text().replace('$', '').trim();  // Extract amount correctly
+              amount = parseFloat(amount); // Convert to number
+          
+              console.log(amount);
+              if (isNaN(amount) || amount <= 0) {
+                  alert("Valid amount is required!");
+                  return;
+              }
+          
+              // Make the AJAX request to create an order
+              $.ajax({
+                  url: "/create_order",
+                  data: JSON.stringify({ amount: amount, info: "order_request" }),
+                  contentType: "application/json",
+                  type: "POST",
+                  dataType: "json",
+                  success: function(response) {
+                      console.log(response);
+                      if (response.id) {  // Check for the 'id' field in the response
+                          // Open Razorpay payment form
+                          let options = {
+                              key: "rzp_test_znK6IhcaIP67Yd", // Your Razorpay public key
+                              amount: amount * 100, // Razorpay accepts amount in paise
+                              currency: "INR",
+                              name: "sanyam-test",
+                              description: "Test Payment",
+                              image: "https://example.com/your_logo",
+                              order_id: response.id, // The order ID returned by your server
+                              handler: function(response) {
+                                  console.log("Payment Successful", response);
+                                  alert("Payment Successful!");
+                              },
+                              prefill: {
+                                  name: "sanyam",
+                                  email: "sanyam@example.com",
+                                  contact: "9999999999"
+                              },
+                              notes: {
+                                  address: "test address"
+                              },
+                              theme: {
+                                  color: "#3399cc"
+                              }
+                          };
+          
+                          var rzp1 = new Razorpay(options);
+                          rzp1.on('payment.failed', function(response) {
+                              alert("Payment failed: " + response.error.description);
+                          });
+          
+                          rzp1.open();
+                      } else {
+                          alert("Error creating order. Please try again.");
+                      }
+                  },
+                  error: function(error) {
+                      console.log(error);
+                      alert("Something went wrong while creating the order.");
+                  },
+              });
+          };
+          
+
+
+        // Fetch all menu items when the page loads
+document.addEventListener("DOMContentLoaded", function() {
+  fetchMenuItems();
+});
+
+// Fetch all menu items from the backend
+function fetchMenuItems() {
+  fetch('/menu/index')
+  .then(response => response.json())
+  .then(data => {
+      displayMenuItems(data);
+  })
+  .catch(error => console.error('Error fetching menu items:', error));
+}
+
+// Display the menu items for customers
+function displayMenuItems(menuItems) {
+  const menuItemsContainer = document.getElementById("menuItemsContainer");
+  menuItemsContainer.innerHTML = ''; // Clear the container
+
+  menuItems.forEach(item => {
+      const itemElement = document.createElement('div');
+      itemElement.innerHTML = `
+          <h3>${item.name}</h3>
+          <p>${item.description}</p>
+          <p>Price: $${item.price}</p>
+          <img src="${item.imageUrl}" alt="${item.name}" style="width: 100px; height: 100px;">
+      `;
+      menuItemsContainer.appendChild(itemElement);
+  });
+}
+
+
+// Menu Filter Logic
+document.addEventListener("DOMContentLoaded", function () {
+  const filterButtons = document.querySelectorAll(".filter-btn");
+  const menuItems = document.querySelectorAll(".menu-item");
+
+  filterButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      // Remove active class from all buttons
+      filterButtons.forEach((btn) => btn.classList.remove("active"));
+      button.classList.add("active");
+
+      const filterValue = button.dataset.filter;
+
+      // Show/Hide menu items based on filter
+      menuItems.forEach((item) => {
+        if (filterValue === "all" || item.classList.contains(filterValue)) {
+          item.style.display = "block";
+        } else {
+          item.style.display = "none";
+        }
+      });
+    });
+  });
+});
+
+
+            </script>
+   
+
+    <!-- Custom Js -->
+    <script src="main.js"></script>
+
+    <!-- Email Submit API -->
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+
+    <!-- Widget Js -->
+    <script
+      src="https://static.elfsight.com/platform/platform.js"
+      data-use-service-core
+      defer
+    ></script>
+
+    <!-- Google tag (gtag.js) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-5K0KD3DWKW"
+    ></script>
+    <script>
+      
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-5K0KD3DWKW");
+
+      document.getElementById("checkout").addEventListener("click", function() {
+        window.location.href = "/pay"; // Redirect to pay.html
+      });
+
+      const sendOrderToAdmin = (orderDetails) => {
+        $.ajax({
+          url: "/send_order_to_admin",  // Backend endpoint to send order details to admin
+          method: "POST",
+          data: JSON.stringify({
+            orderId: orderDetails.id,
+            amount: orderDetails.amount,
+            orderInfo: orderDetails.info
+          }),
+          contentType: "application/json",
+          success: function(response) {
+            console.log("Order details sent to admin:", response);
+          },
+          error: function(error) {
+            console.error("Error sending order details to admin:", error);
+          }
+        });
+      };
+    </script>
+    
+  
+
+
+      
+    </script>
+
+    <!-- Icons Library -->
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
+  </body>
+</html>

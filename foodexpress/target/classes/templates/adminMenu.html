@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Panel</title>
+  
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      display: flex;
+      background-color: #f4f4f4;
+      color: #333;
+    }
+    .sidebar {
+      width: 250px;
+      height: 100vh;
+      background-color: #000;
+      color: white;
+      padding-top: 20px;
+      position: fixed;
+    }
+    .sidebar h2 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #fff;
+    }
+    .nav-links {
+      list-style-type: none;
+      padding: 0;
+    }
+    .nav-links li {
+      margin: 15px 0;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: #fff;
+      padding: 10px;
+      display: block;
+      background-color: #333;
+      border-radius: 5px;
+      text-align: center;
+    }
+    .nav-links a:hover {
+      background-color: #555;
+    }
+    .content {
+      margin-left: 250px;
+      padding: 20px;
+      width: 100%;
+      background-color: #f4f4f4;
+      color: #000;
+    }
+    #homePage {
+      background-image: url('https://media.istockphoto.com/id/908564546/photo/smiling-attractive-professional-waitress-standing-near-bar-with-professional-equipment-and.jpg?s=2048x2048&w=is&k=20&c=Xt0Ld3ybA9Hkwmt9RwpVzPpoWhqmk-KCvOdGYoxFE7c='); /* Replace with your image URL */
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      color: #fff;
+      min-height: 100vh; /* Ensures it covers the full height */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+    #homePage h2 {
+      font-size: 2.5rem;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+      margin-bottom: 20px;
+    }
+    #homePage p {
+      font-size: 1.2rem;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    #homePage h2,
+    #menuPage h2,
+    #ordersPage h2 {
+      color: #000;
+      border-bottom: 1px solid #ccc;
+      padding-bottom: 10px;
+    }
+    #homePage p,
+    #menuPage p,
+    #ordersPage p {
+      color: #333;
+    }
+    .admin-panel input,
+    .admin-panel button,
+    .admin-panel textarea,
+    .admin-panel select {
+      margin: 10px 0;
+      display: block;
+      width: 100%;
+      max-width: 400px;
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      background-color: #fff;
+      color: #000;
+    }
+    .admin-panel button {
+      background-color: #333;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+    }
+    .admin-panel button:hover {
+      background-color: #555;
+    }
+    .menu-item,
+    .order-item {
+      display: flex;
+      justify-content: space-between;
+      margin: 15px 0;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      background-color: #fff;
+      color: #000;
+    }
+    .menu-item img,
+    .order-item img {
+      width: 50px;
+      height: 50px;
+      object-fit: cover;
+      border-radius: 5px;
+    }
+    .menu-details,
+    .order-details {
+      flex-grow: 1;
+      margin-left: 10px;
+    }
+    .menu-details h3,
+    .order-details h3 {
+      margin: 0;
+      color: #000;
+    }
+    .menu-details p,
+    .order-details p {
+      margin: 5px 0;
+      color: #333;
+    }
+
+    #menuPage {
+      background-color: #000; /* Pure black background */
+      color: #fff; /* White text for contrast */
+      min-height: 100vh;
+      padding: 20px;
+      font-family: 'Arial', sans-serif;
+    }
+    
+    #menuPage h2 {
+      font-size: 2.5rem;
+      text-align: center;
+      margin-bottom: 20px;
+      color: #e0e0e0; /* Light gray */
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+      border-bottom: 2px solid #444; /* Subtle underline */
+      display: inline-block;
+      padding-bottom: 10px;
+    }
+    
+    .menu-items {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 30px;
+    }
+    
+    .menu-item {
+      background-color: #1a1a1a; /* Dark gray card */
+      color: #fff;
+      border: 1px solid #333; /* Subtle border */
+      border-radius: 8px;
+      width: 280px;
+      text-align: center;
+      padding: 20px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6); /* Slight shadow */
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    
+    .menu-item:hover {
+      transform: scale(1.05); /* Slight zoom on hover */
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.8);
+    }
+    
+    .menu-item h3 {
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+      color: #e0e0e0;
+    }
+    
+    .menu-item p {
+      font-size: 1rem;
+      color: #b0b0b0; /* Light gray for details */
+    }
+    
+    .menu-item .price {
+      font-size: 1.2rem;
+      color: #ffc107; /* Gold for pricing */
+      margin-top: 10px;
+    }
+    
+    .menu-item button {
+      background-color: #333;
+      color: #fff;
+      border: 1px solid #444;
+      padding: 10px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 15px;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    
+    .menu-item button:hover {
+      background-color: #ffc107; /* Gold on hover */
+      color: #000;
+    }
+    
+    .remove-btn {
+      background-color: #333;
+      color: #fff;
+      border: none;
+      padding: 5px 10px;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+    .remove-btn:hover {
+      background-color: #555;
+    }
+
+    #reviewsPage {
+      background-color: #f4f4f4;
+      color: #333;
+      padding: 20px;
+      min-height: 100vh;
+    }
+    
+    .review-item {
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      background-color: #fff;
+      padding: 15px;
+      margin: 10px 0;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .review-item p {
+      margin: 5px 0;
+    }
+    
+    .review-item textarea {
+      margin-top: 10px;
+      width: 100%;
+      max-width: 600px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    
+    .review-item button {
+      background-color: #333;
+      color: #fff;
+      border: none;
+      padding: 8px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+    
+    .review-item button:hover {
+      background-color: #555;
+    }
+
+    /* Overall Dashboard Styling */
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #121212;
+  color: white;
+  margin: 0;
+  padding: 0;
+}
+
+.dashboard-heading {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #fff;
+  margin-top: 50px;
+  letter-spacing: 1px;
+}
+
+/* Dashboard Stats Container */
+.dashboard-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  margin: 30px;
+}
+
+/* Individual Stat Item Styling */
+.stat-item {
+  background-color: #1c1c1c;
+  color: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease-in-out;
+}
+
+.stat-item:hover {
+  transform: scale(1.05);
+}
+
+/* Stat Item Header Styling */
+.stat-item h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 15px;
+  letter-spacing: 1px;
+}
+
+/* Stat Item Data Styling */
+.stat-item p {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #f5f5f5;
+  letter-spacing: 1px;
+}
+
+/* Hover Effects and Animations */
+.stat-item:hover {
+  background-color: #333;
+}
+
+.stat-item p {
+  transition: color 0.3s ease;
+}
+
+.stat-item:hover p {
+  color: #f4a261; /* Soft orange color for hover effect */
+}
+
+    
+    
+  </style>
+  
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <h2>Admin Panel</h2>
+    <ul class="nav-links">
+      <li><a href="#" onclick="showPage('homePage')">Home</a></li>
+      <li><a href="#" onclick="showPage('dashboardPage')">Dashboard</a></li>
+      <li><a href="#" onclick="showPage('menuPage')">Menu</a></li>
+      <li><a href="#" onclick="showPage('ordersPage')">Orders</a></li>
+  <li><a href="#" onclick="showPage('reviewsPage')">Reviews</a></li>
+      <li><a href="/" onclick="logout()">Logout</a></li>
+    </ul>
+  </div>
+
+  <!-- Content Section -->
+  <div class="content">
+    <h1>Welcome Admin</h1>
+
+    <div id="dashboardPage" style="display: block;">
+      <h2>Dashboard</h2>
+      <div class="dashboard-stats">
+        <div class="stat-item">
+          <h3>Total Orders</h3>
+          <p id="totalOrders">0</p>
+        </div>
+        <div class="stat-item">
+          <h3>Menu Items</h3>
+          <p id="totalMenuItems">0</p>
+        </div>
+        <div class="stat-item">
+          <h3>Overall Rating</h3>
+          <p id="overallRating">N/A</p>
+        </div>
+        <div class="stat-item">
+          <h3>Frequently Ordered Item</h3>
+          <p id="frequentItem">None</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Home Page -->
+    <div id="homePage" style="display: block;">
+      <h2>Welcome to the Admin Panel</h2>
+      <p>Here, you can manage your menu items, view orders, and more.</p>
+    </div>
+
+    <!-- Menu Management Page -->
+    <div id="menuPage" style="display: none;">
+      <!-- Add Menu Item -->
+      <div class="admin-panel">
+        <h2>Add Menu Item</h2>
+        <form id="menuForm">
+          <input type="text" id="itemName" placeholder="Item Name" required />
+          <textarea id="itemDescription" placeholder="Item Description" rows="4" required></textarea>
+          <input type="number" id="itemPrice" placeholder="Price (e.g., 120)" required />
+          <input type="file" id="itemImage" accept="image/*" required />
+          <button type="submit">Add Item</button>
+        </form>
+      </div>
+
+      <!-- Menu Items List -->
+      <h2>Menu Items</h2>
+      <div id="menuList"></div>
+    </div>
+
+    <!-- Orders Page -->
+    <div id="ordersPage" style="display: none;">
+      <h2>Orders</h2>
+      <div id="ordersList"></div>
+    </div>
+
+    <!-- Reviews Page -->
+<div id="reviewsPage" style="display: none;">
+  <h2>Customer Reviews</h2>
+  <div id="reviewsList">
+    <!-- Customer reviews will be dynamically added here -->
+  </div>
+</div>
+
+
+
+  </div>
+
+  <script>
+    const menuForm = document.getElementById('menuForm');
+    const menuList = document.getElementById('menuList');
+    const ordersList = document.getElementById('ordersList');
+    const homePage = document.getElementById('homePage');
+    const menuPage = document.getElementById('menuPage');
+    const ordersPage = document.getElementById('ordersPage');
+
+    // Display menu items after adding a new item
+    menuForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const itemName = document.getElementById('itemName').value;
+      const itemDescription = document.getElementById('itemDescription').value;
+      const itemPrice = document.getElementById('itemPrice').value;
+      const itemImage = document.getElementById('itemImage').files[0];
+
+      if (itemImage) {
+        const reader = new FileReader();
+        reader.onload = function (e) {
+          addMenuItem(itemName, itemDescription, itemPrice, e.target.result);
+        };
+        reader.readAsDataURL(itemImage);
+      }
+    });
+
+    function addMenuItem(name, description, price, imageSrc) {
+      const menuItem = document.createElement('div');
+      menuItem.classList.add('menu-item');
+
+      const img = document.createElement('img');
+      img.src = imageSrc;
+      img.alt = name;
+
+      const details = document.createElement('div');
+      details.classList.add('menu-details');
+      details.innerHTML = `
+        <h3>${name}</h3>
+        <p>${description}</p>
+        <p><strong>Price:</strong> $${price}</p>
+      `;
+
+      const removeBtn = document.createElement('button');
+      removeBtn.textContent = 'Remove';
+      removeBtn.classList.add('remove-btn');
+      removeBtn.addEventListener('click', () => {
+        menuList.removeChild(menuItem);
+      });
+
+      menuItem.appendChild(img);
+      menuItem.appendChild(details);
+      menuItem.appendChild(removeBtn);
+      menuList.appendChild(menuItem);
+
+      menuForm.reset();
+    }
+
+    // Display orders
+    function addOrder(orderDetails) {
+      const orderItem = document.createElement('div');
+      orderItem.classList.add('order-item');
+
+      const details = document.createElement('div');
+      details.classList.add('order-details');
+      details.innerHTML = `
+        <h3>Order ID: ${orderDetails.id}</h3>
+        <p><strong>Customer:</strong> ${orderDetails.customer}</p>
+        <p><strong>Items:</strong> ${orderDetails.items.join(', ')}</p>
+        <p><strong>Total:</strong> $${orderDetails.total}</p>
+      `;
+
+      orderItem.appendChild(details);
+      ordersList.appendChild(orderItem);
+    }
+
+    // Show the corresponding page (e.g., Home, Menu, Orders)
+    function showPage(pageId) {
+      const pages = document.querySelectorAll('.content > div');
+      pages.forEach(page => {
+        page.style.display = 'none';
+      });
+
+      const selectedPage = document.getElementById(pageId);
+      if (selectedPage) {
+        selectedPage.style.display = 'block';
+      }
+    }
+
+    // Set the default page to 'Home' when the page loads
+    window.onload = () => {
+      showPage('homePage');
+    };
+
+    // Logout function: Redirect to the homepage ("/")
+    function logout() {
+      window.location.href = '/'; // Redirects to the homepage
+    }
+
+    // Display orders with Accept and Reject buttons
+function addOrder(orderDetails) {
+  const orderItem = document.createElement('div');
+  orderItem.classList.add('order-item');
+
+  const details = document.createElement('div');
+  details.classList.add('order-details');
+  details.innerHTML = `
+    <h3>Order ID: ${orderDetails.id}</h3>
+    <p><strong>Customer:</strong> ${orderDetails.customer}</p>
+    <p><strong>Items:</strong> ${orderDetails.items.join(', ')}</p>
+    <p><strong>Total:</strong> $${orderDetails.total}</p>
+  `;
+
+  const status = document.createElement('p');
+  status.textContent = 'Status: Pending';
+  status.style.fontWeight = 'bold';
+  status.style.marginTop = '10px';
+
+  const buttonsDiv = document.createElement('div');
+  buttonsDiv.style.display = 'flex';
+  buttonsDiv.style.gap = '10px';
+
+  const acceptBtn = document.createElement('button');
+  acceptBtn.textContent = 'Accept';
+  acceptBtn.style.backgroundColor = '#27ae60';
+  acceptBtn.style.color = 'white';
+  acceptBtn.style.border = 'none';
+  acceptBtn.style.padding = '5px 10px';
+  acceptBtn.style.cursor = 'pointer';
+  acceptBtn.style.borderRadius = '5px';
+  acceptBtn.addEventListener('click', () => {
+    status.textContent = 'Status: Accepted';
+    status.style.color = '#27ae60';
+  });
+
+  const rejectBtn = document.createElement('button');
+  rejectBtn.textContent = 'Reject';
+  rejectBtn.style.backgroundColor = '#e74c3c';
+  rejectBtn.style.color = 'white';
+  rejectBtn.style.border = 'none';
+  rejectBtn.style.padding = '5px 10px';
+  rejectBtn.style.cursor = 'pointer';
+  rejectBtn.style.borderRadius = '5px';
+  rejectBtn.addEventListener('click', () => {
+    status.textContent = 'Status: Rejected';
+    status.style.color = '#e74c3c';
+  });
+
+  buttonsDiv.appendChild(acceptBtn);
+  buttonsDiv.appendChild(rejectBtn);
+
+  orderItem.appendChild(details);
+  orderItem.appendChild(buttonsDiv);
+  orderItem.appendChild(status);
+
+  ordersList.appendChild(orderItem);
+}
+
+// Sample order data for demonstration
+const sampleOrders = [
+  { id: '001', customer: 'John Doe', items: ['Pizza', 'Coke'], total: 25 },
+  { id: '002', customer: 'Jane Smith', items: ['Burger', 'Fries'], total: 15 },
+];
+
+// Display sample orders
+sampleOrders.forEach(order => addOrder(order));
+
+
+const reviewsList = document.getElementById('reviewsList');
+
+  // Sample reviews (this can be replaced with a backend API call)
+  const reviews = [
+    {
+      id: 1,
+      customerName: 'John Doe',
+      reviewText: 'The food was amazing! Loved the experience.',
+      reply: ''
+    },
+    {
+      id: 2,
+      customerName: 'Jane Smith',
+      reviewText: 'Service was a bit slow, but the food made up for it.',
+      reply: ''
+    }
+  ];
+
+  // Display reviews on the Reviews Page
+  function displayReviews() {
+    reviewsList.innerHTML = ''; // Clear existing reviews
+    reviews.forEach((review) => {
+      const reviewDiv = document.createElement('div');
+      reviewDiv.classList.add('review-item');
+
+      reviewDiv.innerHTML = `
+        <div>
+          <p><strong>${review.customerName}</strong>: ${review.reviewText}</p>
+          <p><strong>Admin Reply:</strong> ${
+            review.reply || 'No reply yet'
+          }</p>
+        </div>
+        ${
+          review.reply
+            ? `<textarea id="reply-${review.id}" placeholder="Edit your reply">${review.reply}</textarea>`
+            : `<textarea id="reply-${review.id}" placeholder="Type your reply here"></textarea>`
+        }
+        <button onclick="replyToReview(${review.id})">${
+        review.reply ? 'Edit Reply' : 'Reply'
+      }</button>
+        <button onclick="deleteReview(${review.id})">Delete Review</button>
+        <hr>
+      `;
+
+      reviewsList.appendChild(reviewDiv);
+    });
+  }
+
+  // Add or edit reply to a review
+  function replyToReview(reviewId) {
+    const replyTextarea = document.getElementById(`reply-${reviewId}`);
+    const replyText = replyTextarea.value.trim();
+
+    if (replyText) {
+      const review = reviews.find((r) => r.id === reviewId);
+      if (review) {
+        review.reply = replyText; // Update the review reply
+        displayReviews(); // Refresh the review list
+        alert('Reply added/edited successfully!');
+      }
+    } else {
+      alert('Please type a reply before submitting.');
+    }
+  }
+
+  // Delete a review
+  function deleteReview(reviewId) {
+    const index = reviews.findIndex((r) => r.id === reviewId);
+    if (index !== -1) {
+      reviews.splice(index, 1); // Remove the review from the array
+      displayReviews(); // Refresh the review list
+      alert('Review deleted successfully!');
+    }
+  }
+
+  // Function to handle page navigation
+  function showPage(pageId) {
+    homePage.style.display = 'none';
+    menuPage.style.display = 'none';
+    ordersPage.style.display = 'none';
+    reviewsPage.style.display = 'none';
+    dashboardPage.style.display = 'none';
+
+
+    document.getElementById(pageId).style.display = 'block';
+
+    if (pageId === 'reviewsPage') {
+      displayReviews(); // Load reviews when the Reviews Page is displayed
+    }
+  }
+
+
+ 
+  
+  function updateDashboard() {
+    const totalOrders = 120; // Replace with dynamic data from the backend
+    const totalMenuItems = 45; // Replace with dynamic data from the backend
+    const overallRating = 4.5; // Replace with dynamic data from the backend
+    const frequentItem = "Burger"; // Replace with dynamic data from the backend
+  
+    document.getElementById('totalOrders').innerText = totalOrders;
+    document.getElementById('totalMenuItems').innerText = totalMenuItems;
+    document.getElementById('overallRating').innerText = overallRating;
+    document.getElementById('frequentItem').innerText = frequentItem;
+  }
+  
+  
+  document.getElementById('menuForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const formData = new FormData();
+    formData.append('name', document.getElementById('itemName').value);
+    formData.append('description', document.getElementById('itemDescription').value);
+    formData.append('price', document.getElementById('itemPrice').value);
+    formData.append('image', document.getElementById('itemImage').files[0]);
+  
+    fetch('/admin/addMenuItem', {
+      method: 'POST',
+      body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+      alert('Item added successfully!');
+      fetchMenuItems(); // Refresh menu items on success
+    })
+    .catch(error => console.error('Error adding menu item:', error));
+  });
+  
+  
+
+
+
+
+</script>
+</body>
+</html>

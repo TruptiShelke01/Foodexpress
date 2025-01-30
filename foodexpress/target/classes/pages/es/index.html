@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="En Pollos Asados Gadel, nos enorgullecemos de ofrecer el mejor pollo asado en Apodaca, Nuevo León. Nuestro pollo se prepara con los ingredientes más frescos y se asa a la perfección, asegurando un sabor jugoso y delicioso. Ofrecemos opciones como pollo asado entero, medio pollo asado y paquetes completos con tortillas, papas, cebollas asadas, chiles asados y más. Con un servicio de entrega a domicilio rápido y confiable, disfrutarás de una experiencia culinaria inigualable en la comodidad de tu hogar. ¡Haz tu pedido hoy y descubre por qué somos los mejores!"
+    />
+    <meta
+      name="keywords"
+      content="Pollo asado, Gadel, pollo asado entero, medio pollo asado, paquetes de pollo asado, comida a la parrilla, tortillas, papas, cebollas asadas, chile asado, salsa y limón, salchichas asadas, totopos con guacamole, Apodaca, Nuevo León, servicio de entrega a domicilio, mejor pollo asado, comida deliciosa, para llevar, comida casera, barbacoa, especialidades de pollo, asador en Apodaca, pollo jugoso, comida rápida, menú de barbacoa, oferta de pollo, restaurante de pollo, comidas familiares"
+    />
+    <title>GADEL Pollo Asado</title>
+    <link rel="shortcut icon" href="../../images/favicon.ico" type="image/x-icon" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.2.3/css/flag-icons.min.css"
+    />
+    <link rel="stylesheet" href="../../Styles/style.min.css" />
+  </head>
+
+  <body>
+
+    <div id="custom-alert" class="custom-alert">
+      <span id="alert-message"></span>
+    </div>
+
+    <div class="top-bar">
+      <div class="container">
+        <a href="#" class="topbar-item">
+          <div class="icon">
+            <ion-icon name="location-outline"></ion-icon>
+          </div>
+          <span class="span">
+            Río S. Salvador 1053, Pueblo Nuevo IV, 66646 Cdad. Apodaca, N.L.
+          </span>
+        </a>
+        <div class="topbar-item">
+          <div class="icon">
+            <ion-icon name="time-outline"></ion-icon>
+          </div>
+          <span class="span">Sábados y Domingos => 10:00 am a 9:00 pm</span>
+        </div>
+      </div>
+    </div>
+
+    <header>
+      <div class="container">
+        <a id="nav-menu" class="nav-menu">
+          <ion-icon name="menu-outline"></ion-icon>
+        </a>
+        <a href="#" class="logo">
+          <img src="../../images/logo.svg" alt="Logo" class="logo-img" />
+          <h3>GADEL</h3>
+        </a>
+        <nav class="main-nav">
+          <ul class="nav-links">
+            <li><a href="#home" class="nav-link active-nav">Inicio</a></li>
+            <li><a href="#about" class="nav-link">Acerca de</a></li>
+            <li><a href="#menu" class="nav-link">Menú</a></li>
+            <li><a href="#reviews" class="nav-link">Reseñas</a></li>
+            <li><a href="#location" class="nav-link">Ubicación</a></li>
+            <li><a href="#contact" class="nav-link">Contacto</a></li>
+          </ul>
+        </nav>
+        <div class="nav-icons">
+          <a class="profile-icon" onclick="profilePopup()">
+            <ion-icon name="person-outline"></ion-icon>
+          </a>
+          <a class="cart-icon">
+            <ion-icon name="cart-outline"></ion-icon>
+            <div class="cart-count">
+              <span>0</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <div id="side-menu" class="side-menu">
+      <a id="close-menu" class="close-menu">
+        <ion-icon name="close-outline"></ion-icon>
+      </a>
+      <ul class="side-nav-links">
+        <li><a href="#home" class="side-nav-link">Inicio</a></li>
+        <li><a href="#about" class="side-nav-link">Acerca de</a></li>
+        <li><a href="#menu" class="side-nav-link">Menú</a></li>
+        <li><a href="#reviews" class="side-nav-link">Reseñas</a></li>
+        <li><a href="#location" class="side-nav-link">Ubicación</a></li>
+        <li><a href="#contact" class="side-nav-link">Contacto</a></li>
+      </ul>
+    </div>
+    <div id="side-overlay" class="side-overlay"></div>
+
+    <div id="profile-popup" class="profile-popup">
+      <h2 class="heading">
+        Tu <span>Perfil</span><ion-icon name="create-outline"></ion-icon>
+      </h2>
+      <form id="profileForm">
+        <div class="form-group">
+          <label>Nombre:</label>
+          <input type="text" id="first-name" />
+        </div>
+        <div class="form-group">
+          <label>Apellido:</label>
+          <input type="text" id="last-name" />
+        </div>
+        <div class="form-group">
+          <label>Dirección:</label>
+          <input type="text" id="address" />
+        </div>
+        <div class="form-group">
+          <label>Teléfono:</label>
+          <input type="text" id="phone-number" />
+        </div>
+        <div class="form-group">
+          <label>Ciudad:</label>
+          <select id="city">
+            <option value="">Selecciona Ciudad</option>
+            <option value="Ciudad de México">Ciudad de México</option>
+            <option value="Guadalajara">Guadalajara</option>
+            <option value="Monterrey">Monterrey</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Email:</label>
+          <input type="email" id="email" />
+        </div>
+        <div class="form-actions">
+          <button type="reset" class="reset">Restablecer</button>
+          <button type="button" id="saveButton" class="save">Guardar</button>
+        </div>
+        <div id="save-message" class="hidden">Tus cambios han sido guardados.</div>
+      </form>
+    </div>
+
+    <div class="overlay" id="overlay" onclick="profilePopup()"></div>
+    <div class="cart">
+      <div class="cart-content">
+        <div class="cart-header">
+          <div class="cart-title">
+            <h2>Tu Carrito</h2>
+            <span>0</span>
+          </div>
+          <a class="close-btn">
+            <ion-icon name="close-outline"></ion-icon>
+          </a>
+        </div>
+        <div class="cart-body">
+          <div class="empty">
+            <p class="empty-message">Tu carrito está vacío.</p>
+            <a href="#menu" class="btn">Ver Nuestro Menú</a>
+          </div>
+        </div>
+        <div class="cart-bottom">
+          <div class="total">
+            <h3>Total:</h3>
+            <span>$0.00</span>
+          </div>
+          <div class="actions">
+            <button id="checkout" class="btn">Pagar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section class="home" id="home">
+      <div class="slide-list">
+        <div class="slide-item active-slide">
+          <img
+            src="../../images/gadel8.webp"
+            alt=""
+            style="object-position: top"
+          />
+          <div class="slide-content">
+            <h3><span>Pollo Asado</span></h3>
+            <h1>Pollo Asado Premium</h1>
+            <p>
+              Experimenta nuestro rico pollo asado, perfectamente preparado. En Gadel,
+              cada bocado es un sabor de excelencia culinaria.
+            </p>
+            <a href="#menu" class="btn">Ver Nuestro Menú</a>
+          </div>
+        </div>
+        <div class="slide-item">
+          <img src="../../images/gadel4.webp" alt="" />
+          <div class="slide-content">
+            <h3><span>Creaciones Deliciosas</span></h3>
+            <h1>Exquisitas Creaciones Culinarias</h1>
+            <p>
+              Disfruta de nuestras comidas expertamente elaboradas, que muestran los mejores
+              ingredientes y experiencia culinaria. En Gadel, la satisfacción está
+              garantizada.
+            </p>
+            <a href="#menu" class="btn">Ver Nuestro Menú</a>
+          </div>
+        </div>
+        <div class="slide-item">
+          <img src="../../images/gadel7.webp" alt="" />
+          <div class="slide-content">
+            <h3><span>Ambiente Acogedor</span></h3>
+            <h1>Disfruta en un Ambiente Acogedor</h1>
+            <p>
+              Ven y experimenta una comida relajante en nuestro entorno acogedor. 
+              En Gadel, cada comida es un evento memorable.
+            </p>
+            <a href="#menu" class="btn">Ver Nuestro Menú</a>
+          </div>
+        </div>
+      </div>
+      <div class="slide-indicator"></div>
+    </section>
+
+    <section class="about" id="about">
+      <div class="container">
+        <h2 class="heading">
+          <span>Acerca</span> de Nosotros
+        </h2>
+        <div class="about-container">
+          <div class="about-img">
+            <img
+              src="../../images/gadel2.webp"
+              alt=""
+              class="portrait-rectangle"
+              loading="lazy"
+            />
+          </div>
+          <div class="about-content">
+            <h3><span>Nuestra Historia</span></h3>
+            <p>
+              En Gadel, nos dedicamos a ofrecer el pollo asado más jugoso y sabroso.
+              Nuestra pasión por la comida nos ha llevado a perfeccionar nuestras recetas y
+              métodos de cocción para garantizar una experiencia culinaria inigualable.
+            </p>
+            <p>
+              Desde nuestros humildes comienzos, hemos crecido gracias a nuestra devoción por
+              la calidad y el servicio al cliente. Creemos que una comida deliciosa puede
+              unir a las personas y crear recuerdos duraderos.
+            </p>
+          </div>
+        </div>
+        <div class="about-images">
+          <img src="../../images/gadel6.webp" alt="" loading="lazy" />
+          <img src="../../images/gadel9.webp" alt="" loading="lazy" />
+        </div>
+      </div>
+    </section>
+
+    <section class="menu" id="menu">
+      <div class="container">
+        <h2 class="heading">
+          <span>Nuestro</span> Menú
+        </h2>
+        <div class="menu-container">
+          <div class="menu-item">
+            <div class="menu-img">
+              <img src="../../images/gadel3.webp" alt="Pollo Asado Entero" loading="lazy" />
+            </div>
+            <div class="menu-content">
+              <h3>Pollo Asado Entero</h3>
+              <p>Un pollo entero, asado a la perfección.</p>
+              <p class="price">$200.00</p>
+            </div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-img">
+              <img src="../../images/gadel5.webp" alt="Medio Pollo Asado" loading="lazy" />
+            </div>
+            <div class="menu-content">
+              <h3>Medio Pollo Asado</h3>
+              <p>Medio pollo asado, perfecto para compartir.</p>
+              <p class="price">$110.00</p>
+            </div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-img">
+              <img src="../../images/gadel10.webp" alt="Paquete Familiar" loading="lazy" />
+            </div>
+            <div class="menu-content">
+              <h3>Paquete Familiar</h3>
+              <p>
+                Incluye un pollo entero, tortillas, papas, cebollas asadas, chiles
+                asados y más.
+              </p>
+              <p class="price">$300.00</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="reviews" id="reviews">
+      <div class="container">
+        <h2 class="heading">
+          <span>Reseñas</span> de Clientes
+        </h2>
+      <div
+        class="elfsight-app-68064e4f-34c9-4a9f-a7f0-e884e6c27174"
+        data-elfsight-app-lazy
+      ></div>
+    </section>
+
+    <section class="location" id="location">
+      <div class="container">
+        <h2 class="heading">
+          <span>Nuestra</span> Ubicación
+        </h2>
+        <div class="map-container">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3733.570189140676!2d-100.21484328467961!3d20.581960786210214!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x842cbf11d4c3a16d%3A0x9a20ef93f8edbbc7!2sPollos%20Asados%20Gadel!5e0!3m2!1sen!2smx!4v1596767991542!5m2!1sen!2smx"
+            width="600"
+            height="450"
+            frameborder="0"
+            style="border:0"
+            allowfullscreen=""
+            aria-hidden="false"
+            tabindex="0"
+            loading="lazy"
+          ></iframe>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <div class="container">
+        <h2 class="heading">
+          <span>Contacto</span> y Pedido
+        </h2>
+        <div class="contact-container">
+          <div class="contact-info">
+            <h3>Información de Contacto</h3>
+            <div class="contact-details">
+              <div class="contact-item">
+                <ion-icon name="location-outline"></ion-icon>
+                <p>Río S. Salvador 1053, Pueblo Nuevo IV, 66646 Cdad. Apodaca, N.L.</p>
+              </div>
+              <div class="contact-item">
+                <ion-icon name="call-outline"></ion-icon>
+                <p><a href="tel:+524812345678">+52 481 234 5678</a></p>
+              </div>
+              <div class="contact-item">
+                <ion-icon name="mail-outline"></ion-icon>
+                <p><a href="mailto:contacto@gadel.com">contacto@gadel.com</a></p>
+              </div>
+              <div class="contact-item">
+                <ion-icon name="logo-whatsapp"></ion-icon>
+                <p><a href="https://wa.me/524812345678">WhatsApp</a></p>
+              </div>
+            </div>
+          </div>
+          <div class="contact-form">
+            <h3>Haz tu Pedido</h3>
+            <form>
+              <div class="form-group">
+                <label for="name">Nombre:</label>
+                <input type="text" id="name" required />
+              </div>
+              <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" required />
+              </div>
+              <div class="form-group">
+                <label for="phone">Teléfono:</label>
+                <input type="tel" id="phone" required />
+              </div>
+              <div class="form-group">
+                <label for="message">Mensaje:</label>
+                <textarea id="message" rows="5" required></textarea>
+              </div>
+              <button type="submit" class="btn">Enviar</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-about">
+            <h3>Acerca de Nosotros</h3>
+            <p>
+              En Pollos Asados Gadel, nos enorgullecemos de ofrecer el mejor pollo
+              asado en Apodaca, Nuevo León. Cada comida es una experiencia culinaria
+              única que seguro disfrutarás.
+            </p>
+          </div>
+          <div class="footer-nav">
+            <h3>Navegación</h3>
+            <ul>
+              <li><a href="#home">Inicio</a></li>
+              <li><a href="#about">Acerca de Nosotros</a></li>
+              <li><a href="#menu">Menú</a></li>
+              <li><a href="#reviews">Reseñas</a></li>
+              <li><a href="#location">Ubicación</a></li>
+              <li><a href="#contact">Contacto</a></li>
+            </ul>
+          </div>
+          <div class="footer-contact">
+            <h3>Contacto</h3>
+            <p>Río S. Salvador 1053, Pueblo Nuevo IV, 66646 Cdad. Apodaca, N.L.</p>
+            <p><a href="tel:+524812345678">+52 481 234 5678</a></p>
+            <p><a href="mailto:contacto@gadel.com">contacto@gadel.com</a></p>
+            <p><a href="https://wa.me/524812345678">WhatsApp</a></p>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2024 Pollos Asados Gadel. Todos los derechos reservados.</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Flags Icon -->
+    <div class="lang">
+      <a href="pages/es/index-es.html" class="fi fi-es fis" id="spanish"></a>
+      <a class="fi fi-us fis" id="english"></a>
+    </div>
+
+    <!-- Whatsapp Icon -->
+    <a href="https://wa.me/0096178941518" target="_blank" class="whatsapp">
+      <ion-icon name="logo-whatsapp" class="whatsapp-icon"></ion-icon>
+    </a>
+
+    <!-- Custom Js -->
+    <script src="../../JS/main.min.js"></script>
+
+    <!-- Email Submit API -->
+    <script src="https://smtpjs.com/v3/smtp.js"></script>    
+
+    <!-- Widget Js -->
+    <script
+      src="https://static.elfsight.com/platform/platform.js"
+      data-use-service-core
+      defer
+    ></script>
+
+    <!-- Google tag (gtag.js) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-5K0KD3DWKW"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-5K0KD3DWKW");
+    </script>
+
+    <!-- Icons Library -->
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
+  </body>
+</html>

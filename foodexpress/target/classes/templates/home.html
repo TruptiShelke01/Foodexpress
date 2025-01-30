@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Express - Home</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        .gif-section {
+            margin: 0;
+            padding: 0;
+        }
+
+        .gif-section img {
+            width: 100vw;
+            height: auto;
+            display: block;
+        }
+
+        .gif-section h2 {
+            text-align: center;
+            font-size: 2rem;
+            margin: 10px 0;
+            color: #333;
+        }
+
+        /* Card Section Styles */
+        .card-section {
+            display: flex;
+            justify-content: center;
+            gap: 90px;
+            padding: 40px 20px;
+            background-color: #111;
+            padding-bottom: 100px;
+        }
+
+        .card {
+            width: 180px;
+            height: 180px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            border-radius: 50%;
+            background-color:rgb(57, 53, 53);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            padding: 20px;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .card:hover {
+            transform: scale(1.1);
+        }
+
+        .card i {
+            font-size: 4rem;
+            color: #28a745;
+            margin-bottom: 10px;
+        }
+
+        .card h3 {
+            font-size: 1.3rem;
+            color: white;
+            margin-bottom: 5px;
+        }
+
+        .card p {
+            font-size: 1rem;
+            color: white;
+        }
+
+      
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .card-section {
+                flex-direction: column;
+                gap: 90px;
+            }
+        }
+    </style>
+
+    </style>
+    <link rel="stylesheet" href="styleh.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="logo">
+            <h1>Food Express</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/index">Menu</a></li>
+                <li><a href="/review">Reviews</a></li>
+                <li><a href="/contact">Contact</a></li>
+                <li><a href="/login" id="loginBtn">Login/signup</a></li>
+                
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="gif-section">
+        <img src="https://media2.giphy.com/media/46dZKepqyuidAXPWpV/200.webp?cid=ecf05e47k5xjrn4hfva6srsl9zfvofrna7xiq2whwedr3m6z&ep=v1_gifs_related&rid=200.webp&ct=g">
+        <h2>Delicious Food Delivered to Your Door</h2>
+        <p>Order from a variety of your favorite dishes. Fast and fresh!</p>
+        <a href="/index" class="cta-btn">Order Now</a>
+    </section>
+
+    <!-- Card Section -->
+<!-- Card Section -->
+<section class="card-section">
+    <div class="card">
+        <i class="fas fa-truck card-icon" style="font-size: 4rem; color: #ffffff; margin-bottom: 10px;"></i>
+        <h3>Fast Delivery</h3>
+        
+    </div>
+    <div class="card">
+        <i class="fas fa-utensils card-icon" style="font-size: 4rem; color: #ffffff; margin-bottom: 10px;"></i>
+        <h3>Quality Food</h3>
+        
+    </div>
+    <div class="card">
+        <i class="fas fa-clock card-icon" style="font-size: 4rem; color: #ffffff; margin-bottom: 10px;"></i>
+        <h3>24/7 Services</h3>
+        
+    </div>
+
+    <div class="card">
+        <i class="fas fa-tag" style="font-size: 4rem; color: #ffffff; margin-bottom: 10px;"></i>
+        <h3>Discount Offers</h3>
+       
+    </div>
+</section>
+
+
+
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; 2024 Food Express | All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+</body>
+<!-- Include Font Awesome for icons -->
+
+
+    
+</html>

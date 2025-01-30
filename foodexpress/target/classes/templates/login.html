@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+    <html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <style>
+        html, body {
+          margin: 0;
+          color: #6a6f8c;
+          background: #c8c8c8;
+          font: 600 16px/18px "Open Sans", sans-serif;
+        }
+        *,
+        :after,
+        :before {
+          box-sizing: border-box;
+        }
+        .clearfix:after,
+        .clearfix:before {
+          content: "";
+          display: table;
+        }
+        .clearfix:after {
+          clear: both;
+          display: block;
+        }
+        a {
+          color: inherit;
+          text-decoration: none;
+        }
+        .login-wrap {
+          width: 100%;
+          margin: auto;
+          max-width: 525px;
+          min-height: 670px;
+          position: relative;
+          background: url(https://raw.githubusercontent.com/khadkamhn/day-01-login-form/master/img/bg.jpg) no-repeat center;
+          box-shadow: 0 12px 15px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+        }
+        .login-html {
+          width: 100%;
+          height: 100%;
+          position: absolute;
+          padding: 90px 70px 50px 70px;
+          background: rgba(40, 57, 101, 0.9);
+        }
+        .login-html .sign-in-htm,
+        .login-html .sign-up-htm {
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          position: absolute;
+          transform: rotateY(180deg);
+          backface-visibility: hidden;
+          transition: all 0.4s linear;
+        }
+        .login-html .sign-in,
+        .login-html .sign-up,
+        .login-form .group .check {
+          display: none;
+        }
+        .login-html .tab,
+        .login-form .group .label,
+        .login-form .group .button {
+          text-transform: uppercase;
+        }
+        .login-html .tab {
+          font-size: 22px;
+          margin-right: 15px;
+          cursor: pointer;
+          padding-bottom: 5px;
+          margin: 0 15px 10px 0;
+          display: inline-block;
+          border-bottom: 2px solid transparent;
+        }
+        .login-html .sign-in:checked + .tab,
+        .login-html .sign-up:checked + .tab {
+          color: #fff;
+          border-color: #1161ee;
+          cursor: pointer;
+        }
+        .login-form {
+          min-height: 345px;
+          position: relative;
+          perspective: 1000px;
+          transform-style: preserve-3d;
+        }
+        .login-form .group {
+          margin-bottom: 15px;
+        }
+        .login-form .group .label,
+        .login-form .group .input,
+        .login-form .group .button {
+          width: 100%;
+          color: #fff;
+          display: block;
+        }
+        .login-form .group .input,
+        .login-form .group .button {
+          border: none;
+          padding: 15px 20px;
+          border-radius: 25px;
+          background: rgba(255, 255, 255, 0.1);
+        }
+        .login-form .group input[data-type="password"] {
+          -webkit-text-security: circle;
+        }
+        .login-form .group .label {
+          color: #aaa;
+          font-size: 12px;
+        }
+        .login-form .group .button {
+          background: #1161ee;
+          cursor: pointer;
+        }
+        .login-form .group .button:hover {
+          background: #1454c4;
+          cursor: pointer;
+        }
+        .login-form .group label .icon {
+          width: 15px;
+          height: 15px;
+          border-radius: 2px;
+          position: relative;
+          display: inline-block;
+          background: rgba(255, 255, 255, 0.1);
+        }
+        .login-form .group label .icon:before,
+        .login-form .group label .icon:after {
+          content: "";
+          width: 10px;
+          height: 2px;
+          background: #fff;
+          position: absolute;
+          transition: all 0.2s ease-in-out 0s;
+        }
+        .login-form .group label .icon:before {
+          left: 3px;
+          width: 5px;
+          bottom: 6px;
+          transform: scale(0) rotate(0);
+        }
+        .login-form .group label .icon:after {
+          top: 6px;
+          right: 0;
+          transform: scale(0) rotate(0);
+        }
+        .login-form .group .check:checked + label {
+          color: #fff;
+        }
+        .login-form .group .check:checked + label .icon {
+          background: #1161ee;
+        }
+        .login-form .group .check:checked + label .icon:before {
+          transform: scale(1) rotate(45deg);
+        }
+        .login-form .group .check:checked + label .icon:after {
+          transform: scale(1) rotate(-45deg);
+        }
+        .login-html
+          .sign-in:checked
+          + .tab
+          + .sign-up
+          + .tab
+          + .login-form
+          .sign-in-htm {
+          transform: rotate(0);
+        }
+        .login-html .sign-up:checked + .tab + .login-form .sign-up-htm {
+          transform: rotate(0);
+        }
+    
+        .hr {
+          height: 2px;
+          margin: 60px 0 50px 0;
+          background: rgba(255, 255, 255, 0.2);
+        }
+        .foot-lnk {
+          text-align: center;
+        }
+
+        .error-message {
+            color: red;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .success-message {
+          color: green;
+          font-weight: bold;
+          margin-top: 10px;
+      }
+
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 30px;
+            color: #fff;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+        }
+
+        .close-btn:hover {
+            color: #1161ee;
+        }
+
+        .columns-container {
+          display: flex;
+          gap: 20px; /* Space between columns */
+          margin-top: 20px;
+      }
+
+      .column {
+          flex: 1;
+          min-width: 300px;
+      }
+      .button-container {
+        margin-bottom: 20px;
+    }
+
+    .toggle-button {
+        padding: 10px 20px;
+        margin-right: 10px;
+        cursor: pointer;
+        border: 1px solid #ccc;
+        background-color: #f0f0f0;
+    }
+
+    .toggle-button.active {
+        background-color: #007bff;
+        color: #fff;
+        border-color: #007bff;
+    }
+
+    .columns-container .column {
+        display: none; /* Hide all columns by default */
+    }
+
+    .columns-container .column:first-child {
+        display: block; /* Show the first column by default */
+    }
+    h2 {
+      color: white;
+    }
+    
+    .foot-lnk a {
+      color: white;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    
+    .foot-lnk a:hover {
+      color:  #007bff;; /* Change to your desired color on hover */
+    }
+    
+      </style>
+    
+</head>
+
+<body>
+  <div class="login-wrap">
+    <div class="login-html">
+        <button class="close-btn" onclick="window.location.href='/';">X</button>
+        <input id="tab-1" type="radio" name="tab" class="sign-in" checked>
+        <label for="tab-1" class="tab">CUSTOMER</label>
+        <input id="tab-2" type="radio" name="tab" class="sign-up">
+        <label for="tab-2" class="tab">RESTAURANT</label>
+
+       
+
+
+        
+        <div class="login-form">
+
+            <!-- Sign In Form customer-->
+            <form action="/login" method="POST" class="sign-in-htm" id="loginForm">
+
+              <h2 id="formTitle">Sign Up</h2>
+                <div class="group">
+                    <label for="username" class="label">Username</label>
+                    <input id="username" type="text" name="username" class="input" required>
+                </div>
+                <div class="group">
+                    <label for="password" class="label">Password</label>
+                    <input id="password" type="password" name="password" class="input" minlength="6" required>
+                </div>
+                <div class="group">
+                  <input type="submit" class="button" value="SIGN UP">
+              </div>
+              <div th:if="${error}" class="error-message">
+                <p th:text="${error}"></p>
+            </div>
+            <div th:if="${message}" class="success-message">
+              <p th:text="${message}"></p>
+          </div>
+              <div class="success-message" id="successMessage"></div>
+              <div class="error-message" id="errorMessage" style="display: none;">
+                  <p>Please fill in the required fields.</p>
+              </div>
+      
+              <div class="hr"></div>
+      
+              <div class="foot-lnk">
+                  <a href="#" id="toggleLink">Already have an account? Sign In</a>
+              </div>
+
+                
+
+
+
+            </form>
+
+          
+
+           
+            
+
+            <!-- Sign in Form restaurant -->
+
+            <form action="/admin" method="POST" id="authForm">
+            <div class="sign-up-htm">
+              <div class="group">
+                <label for="username" class="label">Username</label>
+                <input id="username" type="text" name="username" class="input">
+            </div>
+            <div class="group">
+                <label for="password" class="label">Password</label>
+                <input id="password" type="password" name="password" class="input">
+            </div>
+            <input type="hidden" name="formType" value="adminSignIn">
+            <div class="group">
+                <input type="submit" class="button" value="Sign In">
+            </div>
+
+            
+            <div th:if="${error2}" class="error-message">
+                <p th:text="${error2}"></p>
+            </div>
+
+            <div class="hr"></div>
+
+            <div class="foot-lnk">
+                <a href="#forgot">Forgot Password?</a>
+            </div>
+          </form>
+                
+        </div>
+
+            
+      </div>
+    </div>
+
+    
+
+  </div>
+  <div id="welcome-message" style="display:none; text-align:center; font-size:20px; color: green; margin-top: 20px;">
+    Welcome new user!
+</div>
+
+<script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
+<script type="text/javascript">
+  
+
+  function showColumn(columnNumber) {
+    const column1 = document.getElementById('column1');
+    const column2 = document.getElementById('column2');
+    const b1 = document.getElementById('b1');
+    const b2 = document.getElementById('b2');
+
+    if (columnNumber === 1) {
+        column1.style.display = 'block';
+        column2.style.display = 'none';
+        b1.classList.add('active');
+        b2.classList.remove('active');
+    } else if (columnNumber === 2) {
+        column1.style.display = 'none';
+        column2.style.display = 'block';
+        b1.classList.remove('active');
+        b2.classList.add('active');
+    }
+}
+
+const form = document.getElementById('loginForm');
+const formTitle = document.getElementById('formTitle');
+const actionButton = form.querySelector('.button');
+const toggleLink = document.getElementById('toggleLink');
+
+// Hidden input to track form type
+let formTypeInput = document.createElement("input");
+formTypeInput.setAttribute("type", "hidden");
+formTypeInput.setAttribute("name", "formType");
+form.appendChild(formTypeInput);
+
+toggleLink.addEventListener('click', (e) => {
+    e.preventDefault();
+
+    if (formTitle.innerText === "Sign Up") {
+        formTitle.innerText = "Sign In";
+        actionButton.value = "SIGN IN";
+        formTypeInput.value = "signin";
+        toggleLink.innerText = "Don't have an account? Sign Up";
+    } else {
+        formTitle.innerText = "Sign Up";
+        actionButton.value = "SIGN UP";
+        formTypeInput.value = "signup";
+        toggleLink.innerText = "Already have an account? Sign In";
+    }
+});
+
+// Set the default form type
+if (formTitle.innerText === "Sign Up") {
+    formTypeInput.value = "signup";
+} else {
+    formTypeInput.value = "signin";
+}
+
+
+
+
+
+</script>
+</body>
+</html>
+
+
